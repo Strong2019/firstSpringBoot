@@ -39,6 +39,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity webSecurity) throws Exception {
         // 允许访问 /css 目录下的所有文件
         webSecurity.ignoring().antMatchers("/css/**");
+        webSecurity.ignoring().antMatchers("/public/**");
+        webSecurity.ignoring().antMatchers("/favicon.ico", "/resources/**", "/error");
     }
 
     /**
