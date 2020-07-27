@@ -4,13 +4,27 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <title>主页</title>
-    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <link rel="icon" type="image/png" href="https://www.kingland.com/hubfs/Globe.png"/>
     <style type="text/css">
-        body { padding: 40px; }
+        html {
+            height: 100%;
+        }
+        html,body {
+            height: 100%;
+            width: 100%;
+            background-color: #1fc8db;
+            background-image: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+            opacity: 0.95;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            color: #f3f3f3;
+        }
     </style>
 </head>
 <body>
-<h1>INDEX</h1>
+<h1 th:text="${#httpServletRequest.getContextPath()}">INDEX</h1>
 <br/>你好：<a sec:authentication="name"></a>
 
 <a th:href="@{/index}"> INDEX</a>

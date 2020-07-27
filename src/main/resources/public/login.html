@@ -1,41 +1,70 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <meta content="text/html;charset=UTF-8">
-    <title>登录</title>
-    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
-    <style type="text/css">
-        body { padding: 20px; }
-        .starter-template { width:350px; padding: 0 40px; text-align: center; }
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Kingland Intern Project</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="https://www.kingland.com/hubfs/Globe.png"/>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+            height: 150px;
+            width: 100%;
+            background-color: #1fc8db;
+            background-image: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+            opacity: 0.95;
+            text-align: center;
+            margin: auto;
+            color: #f3f3f3;
+        }
+        .head {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .titile {
+            font-size: 64px;
+            line-height: 250px;
+        }
+        .container {
+            margin-top: 100px;
+            width: 30%;
+        }
     </style>
 </head>
 <body>
-
-<a th:href="@{/index}"> INDEX</a>
-<a th:href="@{/admin}"> | ADMIN</a>
-<a th:href="@{/hello}"> | HELLO</a>
-<br>
-
-
-<hr>
-<div class="starter-template">
-    <p th:if="${param.logout}" class="bg-warning">已成功注销
-        有错误，请重试
-    </p><h2>使用用户名密码登录</h2>
-    <form name="form" th:action="@{/login}" action="/login" method="POST">
-        <div class="form-group">
-            <label for="username">账号</label>
-            <input type="text" class="form-control" id="username" name="username" value="" placeholder="账号">
-        </div>
-        <div class="form-group">
-            <label for="password">密码</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="密码">
-        </div>
-        <div class="form-group">
-            <input type="submit" id="login" value="登录" class="btn btn-primary">
-        </div>
-
-    </form>
+<div class="head">
+    <p class="titile">Kingland Intern Project</p>
+    <p th:if="${param.logout}" class="bg-warning" th:text="${param.logout}"></p>
+    <div class="container">
+        <form class="form-horizontal" action="./login" method="post">
+            <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">Username</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                    <a href="/regist" class="btn btn-success">Sign up</a>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
+
 </body>
 </html>

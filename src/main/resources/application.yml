@@ -27,9 +27,15 @@ spring:
     baseline-version: 0
     locations: classpath:migration
 
+# 日志配置
 logging:
   level:
-    com:
-      dc:
-        pcasweb:
-          mapper: debug
+    com.ruoyi: debug
+    org.springframework: warn
+
+## MyBatis配置
+#mybatis:
+#  # 搜索指定包别名
+#  type-aliases-package: com.kingland.demo.bean
+#  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+#  mapper-locations: classpath:mybatis/*Mapper.xml

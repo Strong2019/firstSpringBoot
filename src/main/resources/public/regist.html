@@ -1,10 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Kingland Intern Project</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="https://www.kingland.com/hubfs/Globe.png"/>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+            height: 150px;
+            width: 100%;
+            background-color: #1fc8db;
+            background-image: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+            opacity: 0.95;
+            text-align: center;
+            margin: auto;
+            color: #f3f3f3;
+        }
+        .head {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .titile {
+            font-size: 64px;
+            line-height: 250px;
+        }
+        .container {
+            margin-top: 100px;
+            width: 30%;
+        }
+        .mar {
+            margin-left: 20px;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="head">
+    <p class="titile">Kingland Intern Project</p>
+    <div class="container">
+        <form class="form-horizontal" action="/regist" method="post">
+            <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">Username</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="repeat" class="col-sm-2 control-label">Repeat</label>
+                <div class="col-sm-10" id="error">
+                    <input type="password" class="form-control" id="repeat" placeholder="Repeat your password" name="repeat" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">Sign up</button>
+                    <a href="/login" class="mar">Already have a count? Sign in</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="css/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#repeat").keyup(function () {
+            if ($("#repeat").val() !== $("#password").val()) {
+                console.log("no problem");
+                $("#error").addClass("has-error");
+            }else {
+                $("#error").removeClass("has-error");
+            }
+        });
+        $("#password").keyup(function () {
+            if ($(this).val() !== $("#repeat").val()) {
+                $("#error").addClass("has-error");
+            }else {
+                $("#error").removeClass("has-error");
+            }
+        });
+    });
+</script>
 </body>
 </html>
