@@ -1,7 +1,7 @@
 package com.kingland.demo.mapper;
 
 import com.kingland.demo.bean.User;
-import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -23,6 +23,15 @@ public interface UserMapper {
      * @param username 用户名
      * @return 用户对象
      */
-    @Select("select * from user_info where username = #{username};")
+    @Select("select * from user_info where username = #{username}")
     User queryUserByName(String username);
+
+    /**
+     * 新增用户
+     *
+     * @param user 用户
+     * @return 影响行数
+     */
+    @Insert("insert into user_info(username,password,role,describe) values(#{username},#{password},#{role},#{describe})")
+    int addUser(User user);
 }

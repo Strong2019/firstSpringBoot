@@ -38,9 +38,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity webSecurity) throws Exception {
         // 允许访问 /css 目录下的所有文件
-        webSecurity.ignoring().antMatchers("/css/**");
-        webSecurity.ignoring().antMatchers("/public/**");
-        webSecurity.ignoring().antMatchers("/favicon.ico", "/resources/**", "/error");
+        webSecurity.ignoring().antMatchers("/favicon.ico", "/resources/**", "/error")
+                .antMatchers("/public/css/**")
+                .antMatchers("/public/**");
     }
 
     /**
@@ -54,13 +54,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity
                 .authorizeRequests()
                 // 对于网站部分资源需要指定鉴权
-                .antMatchers("/").hasRole("ADMIN")
+                .antMatchers("/regist").permitAll()
+                .antMatchers("/css/**").permitAll()
+                .antMatchers("/admin").hasRole("ADMIN")
                 // 除上面外的所有请求全部需要鉴权认证
                 .anyRequest().authenticated().and()
                 // 定义当需要用户登录时候，转到的登录页面 .loginPage("/login")
                 .formLogin().loginPage("/login").defaultSuccessUrl("/index").permitAll().and()
                 // 定义登出操作
-                .logout().logoutSuccessUrl("/welcome").permitAll().and()
+                .logout().logoutSuccessUrl("/login").permitAll().and()
                 // 禁用csrf，否则可能会导致一些错误
                 .csrf().disable()
         ;
